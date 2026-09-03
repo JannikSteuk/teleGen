@@ -1,0 +1,29 @@
+#pragma once
+
+#include <cstdint>
+#include <string>
+
+struct TelemetryPacket {
+  uint32_t id;
+  uint64_t timeStampNs;
+  double value;
+};
+
+class TelemetryGenerator {
+protected:
+  uint32_t id;
+  std::string name;
+
+public:
+  TelemetryGenerator(uint32_t id, std::string name) {
+    this->id = id;
+    this->name = name;
+  }
+
+  virtual ~TelemetryGenerator() = default;
+  virtual TelemetryPacket generate_next() = 0;
+  virtual void setParameter(const std::string &key, double value) {}
+
+  uint32_t getId() const { return id; }
+  const std::string &getName() const { return name; }
+};
