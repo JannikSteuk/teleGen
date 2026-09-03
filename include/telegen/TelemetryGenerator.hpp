@@ -5,7 +5,7 @@
 
 struct TelemetryPacket {
   uint32_t id;
-  uint64_t timeStampNs;
+  uint64_t timestamp_ns;
   double value;
 };
 
@@ -22,8 +22,8 @@ public:
 
   virtual ~TelemetryGenerator() = default;
   virtual TelemetryPacket generate_next() = 0;
-  virtual void setParameter(const std::string &key, double value) {}
+  virtual void set_parameter(const std::string &key, double value) {}
 
-  uint32_t getId() const { return id; }
-  const std::string &getName() const { return name; }
+  uint32_t get_id() const { return id; }
+  const std::string &get_name() const { return name; }
 };
