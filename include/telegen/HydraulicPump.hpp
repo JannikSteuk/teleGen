@@ -12,4 +12,14 @@ class HydraulicPump : public TelemetryGenerator {
 
         TelemetryPacket generate_next() override;
         void set_parameter(const std::string& key, double value) override;
+
+        //Getter
+
+        double get_min_pressure() {return current_pressure_bar;}
+        double get_max_pressure() {return target_pressure_bar;}
+
+        //Setter
+
+        void set_min_pressure(double min_pressure) {this->current_pressure_bar = min_pressure;}
+        void set_max_pressure(double max_pressure) {this->target_pressure_bar = max_pressure;}
 };

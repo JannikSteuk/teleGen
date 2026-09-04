@@ -26,4 +26,5 @@ public:
 
   uint32_t get_id() const { return id; }
   const std::string &get_name() const { return name; }
+  void set_name(std::string name) { this->name = name;}
 };

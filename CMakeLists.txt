@@ -26,12 +26,21 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# 6. Unsere Kern-Logik als Bibliothek definieren
+# 6. Unsere Kern-Logik als Bibliothek definieren 
 add_library(telegen_core
     src/HydraulicPump.cpp
     src/GeneratorManager.cpp
+    src/DashboardApp.cpp
+    src/GeneratorEditorWidget.cpp        
+    src/HydraulicPumpEditorWidget.cpp    
 )
 target_include_directories(telegen_core PUBLIC include)
+
+target_link_libraries(telegen_core 
+  PUBLIC 
+    ftxui::screen
+    ftxui::dom 
+    ftxui::component)
 
 # 7. Die Unterordner einbinden
 add_subdirectory(apps)
